@@ -1,5 +1,6 @@
 import unittest
 from student import Student
+from datetime import timedelta
 
 
 class Teststudent(unittest.TestCase):
@@ -18,6 +19,12 @@ class Teststudent(unittest.TestCase):
     def test_email(self):
         print('test_email')
         self.assertEqual(self.student.email, 'john.doe@email.com') 
+
+    def test_apply_extension(self):
+        old_end_date = self.student.end_date
+        self.student.apply_extenstion(5)
+        print('test_apply_extension')
+        self.assertEqual(self.student.end_date, old_end_date + timedelta(day=5))
 
     def test_alert_santa(self):
         print('test_alert_santa')

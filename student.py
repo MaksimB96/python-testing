@@ -10,7 +10,6 @@ class Student:
         self.end_date = date.today() + timedelta(days=365)
         self.naughty_list = False
 
-
         @property
         def full_name(self):
             return f"{self._first_name} {self._last_name}"
@@ -18,6 +17,9 @@ class Student:
         @property
         def email(self):
             return f"{self._first_name.lower()}.{self._last_name.lower()}@email.com"
+
+        def apply_extenstion(self, days):
+            self.end_date = self.end_date + timedelta(days=days)
 
         def alret_santa(self):
             self.naughty_list = True
