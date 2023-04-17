@@ -1,4 +1,7 @@
 from datetime import date, timedelta
+import requests
+from unittest.mock import patch
+
 
 class Student:
     """A student class a base for method testing """
@@ -23,3 +26,11 @@ class Student:
 
         def alret_santa(self):
             self.naughty_list = True
+
+        def course_schedule(self):
+            response = requests.get(f"http://company.com/course-schedule/{self._last_name}/{self._first_name}")
+
+            if response.ok:
+                return response.text
+            else:
+                return "Someething went wrong!"
